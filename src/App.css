@@ -1,0 +1,6 @@
+.navbar-dark .navbar-nav .nav-link {
+  color: white;
+}
+.monaco-editor {
+  overflow: auto;
+}
