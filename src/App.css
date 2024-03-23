@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 .navbar-dark .navbar-nav .nav-link {
   color: white;
 }
