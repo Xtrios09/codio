@@ -109,7 +109,7 @@ class MyEditor extends React.Component {
     return (
       <>
         <div>
-          <Navbar bg="dark" variant='dark+' expand="lg" style={{ color: 'white', padding: '1.5rem' }} className='bg-purple-950'>
+          <Navbar bg="dark" variant='dark' expand="lg" style={{ color: 'white', padding: '1.5rem' }} className='bg-purple-950'>
             <Navbar.Brand>Editor</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
