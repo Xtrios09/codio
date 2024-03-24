@@ -5,6 +5,7 @@ import { Navbar, Nav } from 'react-bootstrap';
 import './App.css';
 import MyComponent from './Components/Editor';
 import MyTerminalComponent from './Components/Terminal';
+import * as theme from 'monaco-themes';
 // import FileTree from 'react-file-tree';
 
 class MyEditor extends React.Component {
@@ -102,13 +103,13 @@ class MyEditor extends React.Component {
       selectOnLineNumbers: true,
       suggest: {
         showWords: true,
-        words: ['console', 'log', 'warn', 'error', 'info']
+        words: ['console', 'log', 'warn', 'error', 'info', 'html', 'print', 'int', 'double', 'float']
       }
     };
     return (
       <>
         <div>
-          <Navbar bg="dark" variant='dark' expand="lg" style={{ color: 'white', padding: '1rem' }} >
+          <Navbar bg="dark" variant='dark+' expand="lg" style={{ color: 'white', padding: '1.5rem' }} className='bg-purple-950'>
             <Navbar.Brand>Editor</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
@@ -118,6 +119,8 @@ class MyEditor extends React.Component {
                 <Nav.Link onClick={() => this.handleLanguageChange('javascript')}>JavaScript</Nav.Link>
                 <Nav.Link onClick={() => this.handleLanguageChange('typescript')}>TypeScript</Nav.Link>
                 <Nav.Link onClick={() => this.handleLanguageChange('python')}>Python</Nav.Link>
+                <Nav.Link onClick={() => this.handleLanguageChange('html')}>Html</Nav.Link>
+                <Nav.Link onClick={() => this.handleLanguageChange('css')}>CSS</Nav.Link>
                 <Nav.Link onClick={this.handleSaveCode}>Save Code</Nav.Link>
               </Nav>
             </Navbar.Collapse>
@@ -130,12 +133,14 @@ class MyEditor extends React.Component {
               onFileRename={this.props.onFileRename}
               /> */}
             <MonacoEditor
+              providerId:true
+              independentColorPoolPerBracketType:true
               autoDetectHighContrast:true
               wordBasedSuggestions:on
               wordBasedSuggestionsOnlySameLanguage:true
               stablePeek:true
               width="100%"
-              height="55rem"
+              height="57rem"
               language={language}
               theme={theme}
               value={code}
@@ -143,6 +148,9 @@ class MyEditor extends React.Component {
               onChange={this.onChange}
               editorDidMount={this.editorDidMount}
               expand="lg"
+              useDefaultDataProvider:true
+              Deprecated:true
+              IDiffEditorModel:true
             />
             {/* <Bash /> */}
 

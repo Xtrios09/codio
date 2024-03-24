@@ -1,9 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-.navbar-dark .navbar-nav .nav-link {
-  color: white;
-}
+
 .monaco-editor {
   overflow: auto;
+}
+*{
+  font-family: "Assistant", sans-serif;
+  font-optical-sizing: auto;
+  font-style: bold;
 }
