@@ -1,63 +1,62 @@
-import React from 'react';
-import MonacoEditor from 'react-monaco-editor';
-import * as monaco from 'monaco-editor';
-import { Navbar, Nav } from 'react-bootstrap';
-import './App.css';
-import MyComponent from './Components/Editor';
-import MyTerminalComponent from './Components/Terminal';
-import * as theme from 'monaco-themes';
+import React from "react";
+import MonacoEditor from "react-monaco-editor";
+import * as monaco from "monaco-editor";
+import { Navbar, Nav } from "react-bootstrap";
+import "./App.css";
+import MyComponent from "./Components/Editor";
+import MyTerminalComponent from "./Components/Terminal";
+import * as theme from "monaco-themes";
 // import FileTree from 'react-file-tree';
 
 class MyEditor extends React.Component {
   componentDidMount() {
-    monaco.languages.registerCompletionItemProvider('yourLanguageId', {
+    monaco.languages.registerCompletionItemProvider("yourLanguageId", {
       provideCompletionItems: function (model, position) {
         return {
           suggestions: [
             {
-              label: 'console',
+              label: "console",
               kind: monaco.languages.CompletionItemKind.Function,
-              insertText: 'console',
-              detail: 'Global object console',
+              insertText: "console",
+              detail: "Global object console",
             },
             {
-              label: 'setTimeout',
+              label: "setTimeout",
               kind: monaco.languages.CompletionItemKind.Function,
-              insertText: 'setTimeout',
-              detail: 'Global function setTimeout',
+              insertText: "setTimeout",
+              detail: "Global function setTimeout",
             },
             {
-              label: 'setInterval',
+              label: "setInterval",
               kind: monaco.languages.CompletionItemKind.Function,
-              insertText: 'setInterval',
-              detail: 'Global function setInterval',
+              insertText: "setInterval",
+              detail: "Global function setInterval",
             },
             {
-              label: 'fetch',
+              label: "fetch",
               kind: monaco.languages.CompletionItemKind.Function,
-              insertText: 'fetch',
-              detail: 'Global function fetch',
+              insertText: "fetch",
+              detail: "Global function fetch",
             },
             {
-              label: 'addEventListener',
+              label: "addEventListener",
               kind: monaco.languages.CompletionItemKind.Function,
-              insertText: 'addEventListener',
-              detail: 'Method to add an event listener',
+              insertText: "addEventListener",
+              detail: "Method to add an event listener",
             },
-          ]
-        }
-      }
-    }
-    );
+          ],
+        };
+      },
+    });
   }
 
   constructor(props) {
     super(props);
     this.state = {
-      code: '// type your code...',
-      theme: 'vs-dark',
-      language: 'javascript'
-    }
+      code: "// type your code...",
+      theme: "vs-dark",
+      language: "javascript",
+    };
   }
 
   /**
@@ -65,11 +64,11 @@ class MyEditor extends React.Component {
    *
    * @param {editor} editor - the editor object
    * @param {monaco} monaco - the monaco object
-   * @return {undefined} 
+   * @return {undefined}
    */
   editorDidMount(editor, monaco) {
-    console.log('editor', editor);
-    console.log('monaco', monaco);
+    console.log("editor", editor);
+    console.log("monaco", monaco);
   }
 
   /**
@@ -80,22 +79,22 @@ class MyEditor extends React.Component {
    * @return {type} description of return value
    */
   onChange(newValue, e) {
-    console.log('onChange', newValue, e);
+    console.log("onChange", newValue, e);
     this.setState({ code: newValue });
   }
 
   handleThemeChange = (theme) => {
     this.setState({ theme });
-  }
+  };
 
   handleLanguageChange = (language) => {
     this.setState({ language });
-  }
+  };
 
   handleSaveCode = () => {
     // Add your code-saving logic here
-    console.log('Code saved:', this.state.code);
-  }
+    console.log("Code saved:", this.state.code);
+  };
 
   render() {
     const { code, theme, language } = this.state;
@@ -103,29 +102,64 @@ class MyEditor extends React.Component {
       selectOnLineNumbers: true,
       suggest: {
         showWords: true,
-        words: ['console', 'log', 'warn', 'error', 'info', 'html', 'print', 'int', 'double', 'float']
-      }
+        words: [
+          "console",
+          "log",
+          "warn",
+          "error",
+          "info",
+          "html",
+          "print",
+          "int",
+          "double",
+          "float",
+        ],
+      },
     };
     return (
       <>
         <div>
-          <Navbar bg="dark" variant='dark' expand="lg" style={{ color: 'white', padding: '1.5rem' }} className='bg-purple-950'>
+          <Navbar
+            bg="dark"
+            variant="dark"
+            expand="lg"
+            style={{ color: "white", padding: "1.5rem" }}
+            className="bg-purple-950"
+          >
             <Navbar.Brand>Editor</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="mr-auto">
-                <Nav.Link onClick={() => this.handleThemeChange('vs')}>Light Theme</Nav.Link>
-                <Nav.Link onClick={() => this.handleThemeChange('vs-dark')}>Dark Theme</Nav.Link>
-                <Nav.Link onClick={() => this.handleLanguageChange('javascript')}>JavaScript</Nav.Link>
-                <Nav.Link onClick={() => this.handleLanguageChange('typescript')}>TypeScript</Nav.Link>
-                <Nav.Link onClick={() => this.handleLanguageChange('python')}>Python</Nav.Link>
-                <Nav.Link onClick={() => this.handleLanguageChange('html')}>Html</Nav.Link>
-                <Nav.Link onClick={() => this.handleLanguageChange('css')}>CSS</Nav.Link>
+                <Nav.Link onClick={() => this.handleThemeChange("vs")}>
+                  Light Theme
+                </Nav.Link>
+                <Nav.Link onClick={() => this.handleThemeChange("vs-dark")}>
+                  Dark Theme
+                </Nav.Link>
+                <Nav.Link
+                  onClick={() => this.handleLanguageChange("javascript")}
+                >
+                  JavaScript
+                </Nav.Link>
+                <Nav.Link
+                  onClick={() => this.handleLanguageChange("typescript")}
+                >
+                  TypeScript
+                </Nav.Link>
+                <Nav.Link onClick={() => this.handleLanguageChange("python")}>
+                  Python
+                </Nav.Link>
+                <Nav.Link onClick={() => this.handleLanguageChange("html")}>
+                  Html
+                </Nav.Link>
+                <Nav.Link onClick={() => this.handleLanguageChange("css")}>
+                  CSS
+                </Nav.Link>
                 <Nav.Link onClick={this.handleSaveCode}>Save Code</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Navbar>
-          <div style={{ display: 'flex' }}>
+          <div style={{ display: "flex" }}>
             {/* <MyComponent /> */}
             {/* <FileTree
               data={this.props.data}
@@ -153,7 +187,6 @@ class MyEditor extends React.Component {
               IDiffEditorModel:true
             />
             {/* <Bash /> */}
-
           </div>
         </div>
       </>
