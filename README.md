@@ -64,7 +64,7 @@ Start the development server:
 
 bash
 
-    npm start
+    npm run dev
 
     Open your browser and go to http://localhost:3000 to access the app!
 
