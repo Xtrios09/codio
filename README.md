@@ -43,9 +43,6 @@ Designed with user experience in mind, the intuitive interface ensures that deve
 ### 10. **Persistent Code Storage**
 Worried about losing your work? The app uses **localStorage** to save your code snippets and settings, ensuring your work persists even after refreshing the page.
 
-### 11. **Deployment Options**
-With one-click deployment, you can easily publish your projects to platforms like Vercel or Heroku. Share your work with the world effortlessly.
-
 ## Getting Started
 
 To run the Code Editor App locally:
